@@ -1,4 +1,4 @@
-(ns sorting-algorithms.simple.insertion-sort
+(ns sorting-algorithms.insertion-sort
   "Sorting using the insertion sort algorithm.")
 
 (defn insert

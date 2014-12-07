@@ -1,5 +1,5 @@
-(ns sorting-algorithms.simple.insertion-sort-test
-  (:require [sorting-algorithms.simple.insertion-sort :refer :all]
+(ns sorting-algorithms.bubble-sort-test
+  (:require [sorting-algorithms.bubble-sort :refer :all]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
             [clojure.test.check.generators :as gen]

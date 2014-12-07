@@ -1,4 +1,4 @@
-(ns sorting-algorithms.simple.selection-sort
+(ns sorting-algorithms.selection-sort
   "Sorting using the selection sort algorithm."
   (:require [sorting-algorithms.utils :as  ut]))
 

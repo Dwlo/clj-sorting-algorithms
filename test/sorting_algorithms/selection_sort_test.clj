@@ -1,5 +1,5 @@
-(ns sorting-algorithms.simple.selection-sort-test
-  (:require [sorting-algorithms.simple.selection-sort :refer :all]
+(ns sorting-algorithms.selection-sort-test
+  (:require [sorting-algorithms.selection-sort :refer :all]
             [clojure.test :refer :all]
             [clojure.test.check :as tc]
             [clojure.test.check.generators :as gen]

@@ -1,4 +1,4 @@
-(ns sorting-algorithms.simple.bubble-sort
+(ns sorting-algorithms.bubble-sort
   "Sorting using the bubble sort algorithm."
   (:require [sorting-algorithms.utils :as  ut]))
 
