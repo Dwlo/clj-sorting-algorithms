@@ -10,6 +10,12 @@
       (process (cons min-val ordered-ns) (ut/remove-item min-val ns)))))
 
 (defn rsort
-  "Sorts in reverse order the given numbers"
+  "Sorts in reverse order using the selection sort algorithm.
+  Example:
+  [1  4  2  3 ]
+  [4* 1  2  3 ]
+  [4* 3* 1  2 ]
+  [4* 3* 2* 1 ]
+  [4* 3* 2* 1*]"
   [numbers]
   (process [] numbers))
