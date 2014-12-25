@@ -17,6 +17,6 @@
       (and (= (count v) (count s))
            (descending? s)))))
 
-(chk/defspec testing-reverse-sort
+(chk/defspec testing-insertion-sort
   1000
   property)
