@@ -17,6 +17,15 @@
      (< head1 head2) (cons head2 (merge-sort items1 (drop 1 items2)))
      :else (cons head1 (merge-sort (drop 1 items1) items2)))))
 
+(defn process
+  [items]
+  (if (empty? (rest items))
+    (first items)
+    (->>  items
+          (partition 2 2 [])
+          (map #(merge-sort (first %) (second %)))
+          process)))
+
 (defn rsort
   "Sorts in reverse using the merge sort algorithm.
   Example:
@@ -28,4 +37,4 @@
   [1* 2* 3* _ ]
   [1* 2* 3* 4*]"
   [items]
-  (reduce merge-sort [] (explode items)))
+  (process (explode items)))
