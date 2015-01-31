@@ -1,22 +1,8 @@
 (ns sorting-algorithms.insertion-sort-test
-  (:require [sorting-algorithms.insertion-sort :refer :all]
-            [clojure.test :refer :all]
-            [clojure.test.check :as tc]
-            [clojure.test.check.generators :as gen]
-            [clojure.test.check.properties :as prop]
-            [clojure.test.check.clojure-test :as chk]))
-
-(defn descending?
-  [coll]
-  (every? (fn [[a b]] (>= a b))
-          (partition 2 1 coll)))
-
-(def property
-  (prop/for-all [v (gen/vector gen/int)]
-    (let [s (rsort v)]
-      (and (= (count v) (count s))
-           (descending? s)))))
+  (:require [sorting-algorithms.insertion-sort :refer [rsort] ]
+            [sorting-algorithms.test-utils     :as    tu      ]
+            [clojure.test.check.clojure-test   :as    chk     ]))
 
 (chk/defspec testing-insertion-sort
   1000
-  property)
+  (tu/property rsort))
