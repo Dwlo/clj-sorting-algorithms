@@ -2,27 +2,33 @@
   "Sorting using the insertion sort algorithm.")
 
 
-(defn insert
-  "Inserts an item into a ordered vector."
-  [ordered-items item]
-  (if (empty? ordered-items)
-    [item]
-    (if (> item (first ordered-items))
-      (cons item ordered-items)
-      (cons (first ordered-items) (insert (rest ordered-items) item)))))
+(defn insert-in-right-place
+  "Inserts a value at the right place in the sorted vector."
+  [sorted-values value]
+  (if (empty? sorted-values)
+    [value]
+    (let [not-last-sorted-vals (pop sorted-values)
+          last-val (peek sorted-values)]
+        (if (>= value last-val)
+        (conj sorted-values value)
+        (conj (insert-in-right-place not-last-sorted-vals value) last-val)))))
+
+(defn sort
+  "Sorts using the insertion sort algorithm.
+  Steps:
+  |----------------+------------------|
+  | sorted vals    | not sorted vals  |
+  |----------------+------------------|
+  |                |                  |
+  | [ ]            | [ 1  4  2  3 ]   |
+  | [ 1 ]          | [ 4  2  3 ]      |
+  | [ 1  4 ]       | [ 2  3 ]         |
+  | [ 1  2  4 ]    | [ 3 ]            |
+  | [ 1  2  3  4 ] | [ ]              |
+  |----------------+------------------|"
+  [items]
+  (reduce insert-in-right-place [] items))
 
 (defn rsort
-  "Sorts in reverse order using the insertion sort algorithm.
-  Steps:
-  |---------------+-----------------|
-  | ordered items | unordered items |
-  |---------------+-----------------|
-  |               |                 |
-  | [ ]           | [1  4  2  3 ]   |
-  | [1 ]          | [4  2  3 ]      |
-  | [4  1 ]       | [2  3 ]         |
-  | [4  2  1 ]    | [3 ]            |
-  | [4  3  2  1 ] | [ ]             |
-  |---------------+-----------------|"
-  [items]
-  (reduce (fn [ns n] (insert ns n)) [] items))
+  [vals]
+  (reverse (sort vals)))
