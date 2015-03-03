@@ -3,19 +3,21 @@
   (:require [sorting-algorithms.utils :refer [remove-item]]))
 
 
-(defn rsort
-  "Sorts in reverse order using the quick sort algorithm.
+(defn sort
+  "Sorts values using the quick sort algorithm.
   Steps:
-  [3  4  2  1  5 ]
-  [4  5  3* 2  1 ]
-  [5  4* 3* 2* 1 ]
-  [5* 4* 3* 2* 1*]"
-
-  [items]
-  (if (empty? items)
+  [3  4  2  1  5]
+  [2 1] 3 [4  5]
+  [1] 2 3  4 [5]
+   1  2  3  4  5"
+  [values]
+  (if (empty? values)
     []
-    (let [head            (first items)
-          remaining-items (remove-item head items)
-          greaters        (filter #(>  % head) remaining-items)
-          smallers        (filter #(<= % head) remaining-items)]
-      (concat (rsort greaters) [head] (rsort smallers)))))
+    (let [head           (first values)
+          remaining-vals (remove-item head values)
+          greaters       (filter #(>  % head) remaining-vals)
+          smallers       (filter #(<= % head) remaining-vals)]
+      (concat (sort smallers) [head] (sort greaters)))))
+
+(defn rsort [vals]
+  (reverse (sort vals)))
