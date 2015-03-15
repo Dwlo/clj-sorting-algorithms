@@ -16,7 +16,7 @@
 (defn sort-slices
   "Sorts the given slices using the insertion sort."
   [sliced-items]
-  (map ins-srt/rsort sliced-items))
+  (map ins-srt/sort sliced-items))
 
 (defn process
   [gap items]
@@ -27,40 +27,41 @@
                fill-with-nils
                (apply interleave))))
 
-(defn rsort
-  "Sorts in reverse order using the shell sort algorithm.
+(defn sort
+  "Sorts using the shell sort algorithm.
   Example:
   [5 1 6 7 2 4 3 8 9 ] k = 4
 
-  [5 2 9]     ---|
-  [1 4]       ---|
-  [6 3]       ---|--- slices
-  [7 8]       ---|
+  [5  2  9]   ---|
+  [1  4]      ---|
+  [6  3]      ---|--- slices
+  [7  8]      ---|
 
-  [9 5 2]     ---|
-  [4 1]       ---|
-  [6 3]       ---|--- sorted slices
-  [8 7]       ---|
+  [2  5  9]   ---|
+  [1  4]      ---|
+  [3  6]      ---|--- sorted slices
+  [7  8]      ---|
 
+  [2  1  3  7  5  4  6  8  9] k = 2
 
-  [9 4 6 8 5 1 3 7 2] k = 2
+  [2  3  5  6  9]  ---|
+  [1  7  4  8]     ---|-- slices
 
-  [9 6 5 3 2] ---|
-  [4 8 1 7]   ---|-- slices
+  [2  3  5  6  9]  ---|
+  [1  4  7  8]     ---|-- sorted slices
 
-  [9 6 5 3 2] ---|
-  [8 7 4 1]   ---|-- sorted slices
+  [2  1  3  4  5  7  6  8  9] k = 1
 
-  [9 8 6 7 5 4 3 1 2] k = 1
+  [2  1  3  4  5  7  6  8  9] |-- slice
 
-  [9 8 6 7 5 4 3 1 2] |-- slice
-
-  [9 8 7 6 5 4 3 2 1] |-- sorted slice
-
-  [9 8 7 6 5 4 3 2 1] * sorted vector"
+  [1  2  3  4  5  6  7  8  9] |-- sorted slice"
 
   [items]
   (let [starting-gap  (quot (count items) 2)
         gaps (take-while #(not (zero? %))
                          (iterate #(quot % 2) starting-gap))]
     (reduce #(process %2 %1) items gaps)))
+
+(defn rsort
+  [vals]
+  (reverse (sort vals)))
