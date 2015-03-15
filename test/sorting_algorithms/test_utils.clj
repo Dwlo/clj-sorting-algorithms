@@ -2,14 +2,14 @@
   (:require [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]))
 
-(defn descending?
+(defn ascending?
   [coll]
-  (every? (fn [[a b]] (>= a b))
+  (every? (fn [[a b]] (<= a b))
           (partition 2 1 coll)))
 
 (defn property
-  [rsort]
+  [fun-sort]
   (prop/for-all [v (gen/vector gen/int)]
-    (let [s (rsort v)]
+    (let [s (fun-sort v)]
       (and (= (count v) (count s))
-           (descending? s)))))
+           (ascending? s)))))

@@ -28,7 +28,3 @@
   |----------------+------------------|"
   [items]
   (reduce insert-in-right-place [] items))
-
-(defn rsort
-  [vals]
-  (reverse (sort vals)))

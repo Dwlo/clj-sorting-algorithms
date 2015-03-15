@@ -46,6 +46,3 @@
   |----------------+----------------|"
   [vals]
   (rearrange [] vals))
-
-(defn rsort [vals]
-  (reverse (sort vals)))

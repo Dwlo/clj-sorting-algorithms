@@ -18,6 +18,3 @@
           greaters       (filter #(>  % head) remaining-vals)
           smallers       (filter #(<= % head) remaining-vals)]
       (concat (sort smallers) [head] (sort greaters)))))
-
-(defn rsort [vals]
-  (reverse (sort vals)))

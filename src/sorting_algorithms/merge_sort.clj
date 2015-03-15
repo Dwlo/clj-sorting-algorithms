@@ -37,7 +37,3 @@
   [4*]   []        --> [1 2 3 4]"
   [vals]
   (process (explode vals)))
-
-
-(defn rsort [vals]
-  (reverse (sort vals)))

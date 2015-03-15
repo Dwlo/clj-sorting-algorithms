@@ -61,7 +61,3 @@
         gaps (take-while #(not (zero? %))
                          (iterate #(quot % 2) starting-gap))]
     (reduce #(process %2 %1) items gaps)))
-
-(defn rsort
-  [vals]
-  (reverse (sort vals)))

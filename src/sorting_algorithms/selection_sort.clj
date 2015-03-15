@@ -23,6 +23,3 @@
   |---------------+-----------------|"
   [vals]
   (process [] vals))
-
-(defn rsort [vals]
-  (reverse (sort vals)))
