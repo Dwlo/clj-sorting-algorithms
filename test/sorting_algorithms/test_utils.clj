@@ -9,7 +9,7 @@
 
 (defn property
   [fun-sort]
-  (prop/for-all [v (gen/vector gen/int)]
-    (let [s (fun-sort v)]
-      (and (= (count v) (count s))
-           (ascending? s)))))
+  (prop/for-all [random-vals (gen/vector gen/int)]
+    (let [sorted-vals (fun-sort random-vals)]
+      (and (= (count random-vals) (count sorted-vals))
+           (ascending? sorted-vals)))))
