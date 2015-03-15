@@ -2,7 +2,7 @@
   "Sorting using the insertion sort algorithm.")
 
 
-(defn insert-in-right-place
+(defn insert-at-right-place
   "Inserts a value at the right place in the sorted vector."
   [sorted-values value]
   (if (empty? sorted-values)
@@ -11,7 +11,7 @@
           last-val (peek sorted-values)]
         (if (>= value last-val)
         (conj sorted-values value)
-        (conj (insert-in-right-place not-last-sorted-vals value) last-val)))))
+        (conj (insert-at-right-place not-last-sorted-vals value) last-val)))))
 
 (defn sort
   "Sorts using the insertion sort algorithm.
@@ -26,5 +26,5 @@
   | [ 1  2  4 ]    | [ 3 ]            |
   | [ 1  2  3  4 ] | [ ]              |
   |----------------+------------------|"
-  [items]
-  (reduce insert-in-right-place [] items))
+  [vals]
+  (reduce insert-at-right-place [] vals))

@@ -1,6 +1,6 @@
 (ns sorting-algorithms.quick-sort
   "Sorting using the quick sort algorithm."
-  (:require [sorting-algorithms.utils :refer [remove-item]]))
+  (:require [sorting-algorithms.utils :refer [remove-val]]))
 
 
 (defn sort
@@ -14,7 +14,7 @@
   (if (empty? values)
     []
     (let [head           (first values)
-          remaining-vals (remove-item head values)
+          remaining-vals (remove-val head values)
           greaters       (filter #(>  % head) remaining-vals)
           smallers       (filter #(<= % head) remaining-vals)]
       (concat (sort smallers) [head] (sort greaters)))))

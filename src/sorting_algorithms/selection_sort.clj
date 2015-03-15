@@ -1,19 +1,19 @@
 (ns sorting-algorithms.selection-sort
   "Sorting using the selection sort algorithm."
-  (:require [sorting-algorithms.utils :refer [remove-item]]))
+  (:require [sorting-algorithms.utils :refer [remove-val]]))
 
 (defn process
   [sorted-vals vals]
   (if (empty? vals)
     sorted-vals
     (let [min-val (apply min vals)]
-      (process (conj sorted-vals min-val) (remove-item min-val vals)))))
+      (process (conj sorted-vals min-val) (remove-val min-val vals)))))
 
 (defn sort
   "Sorts values using the selection sort algorithm.
   Steps:
   |---------------+-----------------|
-  | ordered items | unordered items |
+  | ordered vals  | unordered vals  |
   |---------------+-----------------|
   | [ ]           | [1  4  2  3 ]   |
   | [1 ]          | [4  2  3 ]      |

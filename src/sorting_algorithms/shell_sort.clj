@@ -8,21 +8,21 @@
   (let [max-count (apply max (map #(count %) vectors))]
     (map #(concat % (repeat (- max-count (count %)) nil)) vectors)))
 
-(defn slice-items
-  "Divides into slices the given items based on the gap."
-  [gap items]
-  (for [i (range 0 gap)] (take-nth gap (drop i items))))
+(defn slice-values
+  "Divides into slices the given values based on the gap."
+  [gap values]
+  (for [i (range 0 gap)] (take-nth gap (drop i values))))
 
 (defn sort-slices
   "Sorts the given slices using the insertion sort."
-  [sliced-items]
-  (map ins-srt/sort sliced-items))
+  [sliced-values]
+  (map ins-srt/sort sliced-values))
 
 (defn process
-  [gap items]
+  [gap values]
   (remove nil?
-          (->> items
-               (slice-items gap)
+          (->> values
+               (slice-values gap)
                sort-slices
                fill-with-nils
                (apply interleave))))
@@ -56,8 +56,8 @@
 
   [1  2  3  4  5  6  7  8  9] |-- sorted slice"
 
-  [items]
-  (let [starting-gap  (quot (count items) 2)
+  [values]
+  (let [starting-gap  (quot (count values) 2)
         gaps (take-while #(not (zero? %))
                          (iterate #(quot % 2) starting-gap))]
-    (reduce #(process %2 %1) items gaps)))
+    (reduce #(process %2 %1) values gaps)))
