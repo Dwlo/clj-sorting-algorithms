@@ -1,6 +1,5 @@
 (ns sorting-algorithms.quick-sort
-  "Sorting using the quick sort algorithm."
-  (:require [sorting-algorithms.utils :refer [remove-val]]))
+  "Sorting using the quick sort algorithm.")
 
 
 (defn sort
@@ -10,11 +9,9 @@
   [2 1] 3 [4  5]
   [1] 2 3  4 [5]
    1  2  3  4  5"
-  [values]
+  [[head & tail :as values]]
   (if (empty? values)
     []
-    (let [head           (first values)
-          remaining-vals (remove-val head values)
-          greaters       (filter #(>  % head) remaining-vals)
-          smallers       (filter #(<= % head) remaining-vals)]
+    (let [greaters (filter #(>  % head) tail)
+          smallers (filter #(<= % head) tail)]
       (concat (sort smallers) [head] (sort greaters)))))
