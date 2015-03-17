@@ -7,11 +7,11 @@
   [sorted-values value]
   (if (empty? sorted-values)
     [value]
-    (let [not-last-sorted-vals (pop sorted-values)
-          last-val (peek sorted-values)]
-        (if (>= value last-val)
+    (let [last-val (peek sorted-values)]
+      (if (>= value last-val)
         (conj sorted-values value)
-        (conj (insert-at-right-place not-last-sorted-vals value) last-val)))))
+        (let [not-last-sorted-vals (pop sorted-values)]
+          (conj (insert-at-right-place not-last-sorted-vals value) last-val))))))
 
 (defn sort
   "Sorts using the insertion sort algorithm.
