@@ -2,7 +2,7 @@
   "Sorting using merge sort algorithm.")
 
 (defn explode
-  "Explodes an vecotr with one or many values into multiples single value vectors."
+  "Explodes a vector with one or many values into multiples single value vectors."
   [vals]
   (for [i vals] [i]))
 
