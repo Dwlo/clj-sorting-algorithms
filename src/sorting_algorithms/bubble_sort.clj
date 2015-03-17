@@ -7,9 +7,9 @@
   [vals]
   (-> (fn [sorted-vals next-val]
         (cond
-         (empty? sorted-vals) [next-val]
+         (empty? sorted-vals)            [next-val]
          (> next-val (peek sorted-vals)) (conj sorted-vals next-val)
-         :else (conj (pop sorted-vals) next-val (peek sorted-vals))))
+         :else                           (conj (pop sorted-vals) next-val (peek sorted-vals))))
       (reduce [] vals)))
 
 (defn rearrange
