@@ -6,6 +6,5 @@
   "Removes the first given item from the vector."
   [n ns]
   (let [not=n? #(not= % n)]
-    (->> (take-while not=n? ns)
-         (merge (rest (drop-while not=n? ns)))
-         flatten)))
+    (-> (take-while not=n? ns)
+        (concat (rest (drop-while not=n? ns))))))
