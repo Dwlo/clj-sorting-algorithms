@@ -8,14 +8,12 @@
 
 (defn merge-sort
   "Merges and sorts two arrays already sorted."
-  [vals1 vals2]
-  (let [head1 (first vals1)
-        head2 (first vals2)]
-    (cond
-     (empty? vals1) vals2
-     (empty? vals2) vals1
-     (< head1 head2) (cons head1 (merge-sort (drop 1 vals1) vals2))
-     :else (cons head2 (merge-sort vals1 (drop 1 vals2))))))
+  [[head1 & rest1 :as vals1] [head2 & rest2 :as vals2]]
+  (cond
+    (empty? vals1)  vals2
+    (empty? vals2)  vals1
+    (< head1 head2) (cons head1 (merge-sort rest1 vals2))
+    :else           (cons head2 (merge-sort vals1 rest2))))
 
 (defn process
   [vals]
