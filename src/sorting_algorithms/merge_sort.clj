@@ -21,10 +21,10 @@
   [vals]
   (if (empty? (rest vals))
     (first vals)
-    (->>  vals
-          (partition 2 2 [])
-          (map #(merge-sort (first %) (second %)))
-          process)))
+    (->> vals
+         (partition 2 2 [])
+         (map #(merge-sort (first %) (second %)))
+         process)))
 
 (defn sort
   "Sorts using the merge sort algorithm.
