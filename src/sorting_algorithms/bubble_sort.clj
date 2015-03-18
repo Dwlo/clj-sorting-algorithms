@@ -5,11 +5,11 @@
 (defn bubblify
   "Bubbles the given values."
   [vals]
-  (-> (fn [sorted-vals next-val]
+  (-> (fn [bubble-vals next-val]
         (cond
-         (empty? sorted-vals) [next-val]
-         (> next-val (peek sorted-vals)) (conj sorted-vals next-val)
-         :else (conj (pop sorted-vals) next-val (peek sorted-vals))))
+         (empty? bubble-vals)            [next-val]
+         (> next-val (peek bubble-vals)) (conj bubble-vals next-val)
+         :else                           (conj (pop bubble-vals) next-val (peek bubble-vals))))
       (reduce [] vals)))
 
 (defn rearrange

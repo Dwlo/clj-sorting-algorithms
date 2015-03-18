@@ -5,6 +5,5 @@
 (defn remove-val
   "Removes the first given item from the vector."
   [n ns]
-  (->> (take-while #(not= % n ) ns)
-       (merge (rest (drop-while #(not= % n) ns)))
-       (flatten)))
+  (let [[heads tails] (split-with #(not= % n) ns)]
+    (concat heads (rest tails))))
