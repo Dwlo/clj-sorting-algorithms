@@ -1,7 +1,7 @@
 # sorting-algorithms
 
 This is a set of sorting algorithms examples implemented in Clojure.  
-They focus on the classic way of sorting and do not try to achieve any exploit.
+They focus on the classic way of sorting in functional style and do not try to achieve any exploit.
 
 
 List of sorting algorithms:
