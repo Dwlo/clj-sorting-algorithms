@@ -1,3 +1,5 @@
+[![Build Status](http://151.80.42.2:9990/buildStatus/icon?job=clj-sorting-algorithms)](http://151.80.42.2:9990/job/clj-sorting-algorithms)
+
 # sorting-algorithms
 
 This is a set of sorting algorithms examples implemented in Clojure.  
